@@ -12,7 +12,7 @@ doubleEveryOther :: [Int] -> [Int]
 doubleEveryOther = reverse . doubleEven . reverse
 
 sumDigits :: [Int] -> Int
-sumDigits = sum . concat . map (toDigits) 
+sumDigits = sum . concatMap toDigits
 
 validate :: Int -> Bool
 validate x = (sumDigits . doubleEveryOther . toDigits) x `mod` 10 == 0

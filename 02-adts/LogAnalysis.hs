@@ -25,7 +25,7 @@ insert msg@(LogMessage _ msgTimestamp _) (Node left treeMsg@(LogMessage _ treeTi
 insert _ tree = tree
 
 build :: [LogMessage] -> MessageTree
-build msgs = foldr insert Leaf msgs
+build  = foldr insert Leaf
 
 inOrder :: MessageTree -> [LogMessage]
 inOrder Leaf = []
@@ -43,4 +43,4 @@ msgToString (LogMessage _ _ msg) = msg
 msgToString (Unknown msg) = msg
 
 whatWentWrong :: [LogMessage] -> [String]
-whatWentWrong = (map msgToString) . (filter isSevere) . inOrder . build
+whatWentWrong = map msgToString . filter isSevere . inOrder . build
